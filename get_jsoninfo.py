@@ -1,6 +1,13 @@
-import json5
-fp = open('E:/dataset/202011/02 5945555/label/01.json')
-js = json5.load(fp)
-d = js["shapes"]
-for p in d:
-    print(p["label"], p["points"], type(p["points"]), '\n')
+import json
+from json import encoder
+import os
+
+path = "E:/labelset"
+
+for root, dirs, files in os.walk(path):
+    for f in files:
+        if (f[-4:] == "json" and f[:3] != "fix"):
+            fp = open(os.path.join(root, f), encoding="utf-8")
+            js = json.load(fp)
+            del js["imageData"]
+            print(js)
