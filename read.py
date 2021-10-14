@@ -1,9 +1,15 @@
 from PIL import Image
-import json5
+import json
+import os
 
-fp = open('E:/dataset/202011/02 5945555/label/0100.json')
-js = json5.load(fp)
-im = js["imageData"]
-print(im)
-# im = Image.frombytes(mode="RGB", size=[1440,1080], data=bytes(im, encoding="utf-8"), decoder_name="raw")
-# im.show()
+path = "D:\Workspace\labelset"
+im = []
+label = []
+for root, dirs, files in os.walk(path):
+    for sdir in dirs:
+        for ro, ssdir, fil in  os.walk(os.path.join(root, sdir)):
+            for f in fil:
+                if (f[-4:] == ".jpg"):
+                    fname = f[:-4]
+                    print(fname)
+                    # temp_im = Image.open()
