@@ -2,8 +2,8 @@ import json
 import os
 import shutil
 
-path = "D:/Workspace/labelset"
-path_dir = "E:\labelset"
+path = "E:/labelset"
+path_dir = "E:/labelset"
 sum1 = 0
 
 for root, dirs, files in os.walk(path):
@@ -13,6 +13,7 @@ for root, dirs, files in os.walk(path):
                 for f in fil:
                     if (f == "0000.json"):
                         sum1 += 1
-                        id = ro[22:]                        
-                        os.system("labelme_json_to_dataset \"" + os.path.join(ro, f) + "\" -o " + "\"D:/Workspace/iodine/" + id + '\"')
+                        id = ro[12:]  
+                        # print(id)                      
+                        os.system("labelme_json_to_dataset \"" + os.path.join(ro, f) + "\" -o " + "\"E:/iodine/" + id + '\"')
 print(sum1)
