@@ -2,7 +2,7 @@ import json
 from json import encoder
 import os
 
-path = "E:\labelset"
+path = "D:/Workspace/labelset"
 
 for root, dirs, files in os.walk(path):
     for f in files:
