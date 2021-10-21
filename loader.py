@@ -1,11 +1,11 @@
 import paddle
-from dataset import MyDataset
+import dataset
 
 BATCH_SIZE = 64
 BATCH_NUM = 20
 
 # 测试定义的数据集
-custom_dataset = MyDataset()
+custom_dataset = dataset.IodineDataset()
 
 print('=============custom dataset=============')
 for data, label in custom_dataset:
