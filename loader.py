@@ -5,11 +5,12 @@ BATCH_SIZE = 64
 BATCH_NUM = 20
 
 # 测试定义的数据集
-custom_dataset = MyDataset(79)
+custom_dataset = MyDataset()
 
 print('=============custom dataset=============')
 for data, label in custom_dataset:
-    print(data.shape, label.shape)
+    data.show()
+    label.show()
     break
 
 # train_loader = paddle.io.DataLoader(custom_dataset, batch_size=BATCH_SIZE, shuffle=True)
