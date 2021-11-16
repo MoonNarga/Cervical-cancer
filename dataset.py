@@ -2,6 +2,7 @@ import paddle
 from paddle.io import Dataset
 import os
 from PIL import Image
+import numpy as np
 
 IMAGE_SIZE = (1440, 1080)
 CLASS_NUM = 2
@@ -22,8 +23,12 @@ class IodineDataset(Dataset):
         for root, dirs, files in os.walk(path):
             for subdir in dirs:
                 if (subdir != "iodine"):
-                    self.train_images.append(Image.open(os.path.join(root, subdir, "img.png")))
-                    self.train_labels.append(Image.open(os.path.join(root, subdir, "label.png")))
+                    img = Image.open(os.path.join(root, subdir, "img.png"))
+                    np_img = np.array(img)
+                    self.train_images.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "label.png"))
+                    np_img = np.array(img)
+                    self.train_labels.append(np_img)
                     self.num_samples += 1
 
     def __getitem__(self, index):
@@ -64,14 +69,30 @@ class AceticDataset(Dataset):
         for root, dirs, files in os.walk(path):
             for subdir in dirs:
                 if (subdir != "acetic" and subdir != "0100" and subdir != "0130" and subdir != "0200" and subdir != "0230"):
-                    self.train_images_0100.append(Image.open(os.path.join(root, subdir, "0100/img.png")))
-                    self.train_images_0130.append(Image.open(os.path.join(root, subdir, "0130/img.png")))
-                    self.train_images_0200.append(Image.open(os.path.join(root, subdir, "0200/img.png")))
-                    self.train_images_0230.append(Image.open(os.path.join(root, subdir, "0230/img.png")))
-                    self.train_labels_0100.append(Image.open(os.path.join(root, subdir, "0100/label.png")))
-                    self.train_labels_0130.append(Image.open(os.path.join(root, subdir, "0130/label.png")))
-                    self.train_labels_0200.append(Image.open(os.path.join(root, subdir, "0200/label.png")))
-                    self.train_labels_0230.append(Image.open(os.path.join(root, subdir, "0230/label.png")))
+                    img = Image.open(os.path.join(root, subdir, "0100/img.png"))
+                    np_img = np.array(img)
+                    self.train_images_0100.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0130/img.png"))
+                    np_img = np.array(img)
+                    self.train_images_0130.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0200/img.png"))
+                    np_img = np.array(img)
+                    self.train_images_0200.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0230/img.png"))
+                    np_img = np.array(img)
+                    self.train_images_0230.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0100/label.png"))
+                    np_img = np.array(img)
+                    self.train_labels_0100.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0130/label.png"))
+                    np_img = np.array(img)
+                    self.train_labels_0130.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0200/label.png"))
+                    np_img = np.array(img)
+                    self.train_labels_0200.append(np_img)
+                    img = Image.open(os.path.join(root, subdir, "0230/label.png"))
+                    np_img = np.array(img)
+                    self.train_labels_0230.append(np_img)
                     self.num_samples += 1
 
     def __getitem__(self, index):
